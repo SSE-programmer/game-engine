@@ -5,7 +5,9 @@
 #include "SSE-engine/basic/Vector3D.h"
 #include "SSE-engine/objects/ObjectManager.h"
 #include "SSE-engine/scenes/SceneManager.h"
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+std::string TITLE = "Game Engine";
+
 int main() {
     auto v1 = Vector3D(1.5, 2, 3);
     auto v2 = Vector3D(1, 4, 7);
@@ -33,8 +35,18 @@ int main() {
         }
 
         float dt = clock.restart().asSeconds();
-        sceneManager.update(dt);
+        std::string FPS = std::to_string(static_cast<int>(1 / dt));
+        std::string title;
 
+        title.reserve(TITLE.size() + FPS.size() + 3);
+        title += TITLE;
+        title += "[";
+        title += FPS;
+        title += "]";
+        window.setTitle(title);
+
+        sceneManager.update(dt);
+        window.setTitle(title);
         window.clear(sf::Color::White);
         sceneManager.draw(window);
         window.display();
