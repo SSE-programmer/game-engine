@@ -4,7 +4,12 @@ CircleObject::CircleObject(float radius, sf::Vector2f position) {
     circle.setRadius(radius);
     circle.setOrigin(circle.getGeometricCenter());
     circle.setPosition(position);
-    circle.setFillColor(sf::Color::Red);
+    circle.setFillColor(_color);
+}
+
+void CircleObject::setColor(sf::Color color) {
+    _color = color;
+    circle.setFillColor(color);
 }
 
 void CircleObject::update(float dt) {

@@ -22,7 +22,7 @@ int main() {
     window.setFramerateLimit(144);
 
 
-    SceneManager sceneManager;
+    SceneManager sceneManager(&window);
     // sceneManager.changeScene(std::make_unique<MainMenuScene>());
     sceneManager.changeScene(std::make_unique<VectorScene>());
 
@@ -49,7 +49,7 @@ int main() {
         sceneManager.update(dt);
         window.setTitle(title);
         window.clear(sf::Color::White);
-        sceneManager.draw(window);
+        sceneManager.draw();
         window.display();
     }
 }

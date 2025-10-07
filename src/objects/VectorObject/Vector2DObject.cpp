@@ -1,5 +1,6 @@
 #include "Vector2DObject.h"
 
+#include "objects/CircleObject/CircleObject.h"
 #include "SSE-engine/basic/Math.h"
 
 void Vector2DObject::setOrigin(Vector2D origin) {
@@ -18,6 +19,7 @@ void Vector2DObject::draw(sf::RenderTarget &target) {
     const float thickness = 2.0f;
     const float arrowLength = 12.0f;
     const float arrowWidth = 8.0f;
+    const float dotRadius = 3.0f;
 
     Vector2D direction = Normalize(_vector);
 
@@ -30,6 +32,10 @@ void Vector2DObject::draw(sf::RenderTarget &target) {
     thickLine.setRotation(sf::degrees(angleDeg));
     thickLine.setFillColor(_color);
     target.draw(thickLine);
+
+    CircleObject dot(dotRadius, {_origin.x, _origin.y});
+    dot.setColor(_color);
+    dot.draw(target);
 
     sf::ConvexShape arrow;
     arrow.setPointCount(3);

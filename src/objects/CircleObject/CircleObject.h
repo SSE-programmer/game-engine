@@ -5,9 +5,12 @@
 class CircleObject : public GameObject {
 private:
     sf::CircleShape circle;
+    sf::Color _color{sf::Color::Black};
 
 public:
     CircleObject(float radius, sf::Vector2f position);
+
+    void setColor(sf::Color color);
 
     void update(float dt) override;
 

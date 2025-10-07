@@ -9,7 +9,7 @@ protected:
 public:
     virtual ~Scene() = default;
 
-    virtual void load() = 0;
+    virtual void load(sf::RenderTarget &target) = 0;
 
     void update(float dt) { manager.updateAll(dt); }
     void draw(sf::RenderTarget &target) { manager.drawAll(target); }
