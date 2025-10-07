@@ -1,9 +1,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "scenes/VectorScene/VectorScene.h"
 #include "src/scenes/MainScene/MainScene.h"
 #include "SSE-engine/basic/Vector3D.h"
-#include "SSE-engine/objects/ObjectManager.h"
 #include "SSE-engine/scenes/SceneManager.h"
 
 std::string TITLE = "Game Engine";
@@ -23,7 +23,8 @@ int main() {
 
 
     SceneManager sceneManager;
-    sceneManager.changeScene(std::make_unique<MainMenuScene>());
+    // sceneManager.changeScene(std::make_unique<MainMenuScene>());
+    sceneManager.changeScene(std::make_unique<VectorScene>());
 
     sf::Clock clock;
 

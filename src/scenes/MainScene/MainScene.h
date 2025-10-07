@@ -1,5 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "SSE-engine/scenes/Scene.h"
 
 #include "src/objects/CircleObject/CircleObject.h"
