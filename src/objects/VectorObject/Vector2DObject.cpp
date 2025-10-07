@@ -21,11 +21,11 @@ void Vector2DObject::draw(sf::RenderTarget &target) {
 
     Vector2D direction = Normalize(_vector);
 
-    sf::RectangleShape thickLine(sf::Vector2f(magnitude, thickness));
+    sf::RectangleShape thickLine(sf::Vector2f(magnitude - arrowLength, thickness));
     thickLine.setOrigin({0.f, thickness / 2.f});
     thickLine.setPosition({_origin.x, _origin.y});
 
-    const float angleDeg = std::atan2(direction.y, direction.x) * 180.f / PI;
+    const float angleDeg = std::atan2(direction.y, direction.x) * 180.f / static_cast<float>(PI);
 
     thickLine.setRotation(sf::degrees(angleDeg));
     thickLine.setFillColor(_color);
