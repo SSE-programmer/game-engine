@@ -29,13 +29,12 @@ void CoordinateSystemObject::update(float dt) {
 
 void CoordinateSystemObject::draw(sf::RenderTarget &target) {
     const sf::Vector2u renderTargetSize = target.getSize();
-    constexpr float step = 10.0f;
-    constexpr float epsilon = step * 0.5 - 0.1;
+    const float epsilon = _step * 0.5 - 0.1;
     sf::Color secondaryLineColor = sf::Color(_color.r, _color.g, _color.b, 100);
-    const float xLinesOffset = fmod(_origin.x, step);
-    const float yLinesOffset = fmod(_origin.y, step);
+    const float xLinesOffset = fmod(_origin.x, _step);
+    const float yLinesOffset = fmod(_origin.y, _step);
 
-    for (float x = xLinesOffset; x < renderTargetSize.x; x += step) {
+    for (float x = xLinesOffset; x < renderTargetSize.x; x += _step) {
         const bool isMainLine = abs(x - _origin.x) <= epsilon;
         Vector2DObject secondaryLine({0, static_cast<float>(renderTargetSize.y)}, {x, 0});
 
@@ -45,7 +44,7 @@ void CoordinateSystemObject::draw(sf::RenderTarget &target) {
         secondaryLine.draw(target);
     }
 
-    for (float y = yLinesOffset; y < renderTargetSize.y; y += step) {
+    for (float y = yLinesOffset; y < renderTargetSize.y; y += _step) {
         const bool isMainLine = abs(y - _origin.y) <= epsilon;
         Vector2DObject secondaryLine({static_cast<float>(renderTargetSize.x), 0}, {0, y});
 
