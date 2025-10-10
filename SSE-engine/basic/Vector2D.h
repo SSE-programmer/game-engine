@@ -81,3 +81,7 @@ inline Vector2D Normalize(const Vector2D &v) {
 
     return v * (1.0f / mag);
 }
+
+inline float Dot(const Vector2D &a, const Vector2D &b) {
+    return (a.x * b.x + a.y * b.y);
+}
